@@ -16,7 +16,7 @@ public class MessageReceiver {
 
 	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
 
-	private static final String ORDER_RESPONSE_QUEUE = "TEST";
+	private static final String ORDER_RESPONSE_QUEUE = "domain.accountmanagement.orderLifeCycle.approved";
 
 	@JmsListener(destination = ORDER_RESPONSE_QUEUE)
 	public void receiveMessage(final Map message) throws JMSException {
