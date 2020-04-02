@@ -11,7 +11,8 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class MessagingConfiguration {
 
-	private static final String DEFAULT_BROKER_URL = "failover:(tcp://slcq071mqm001.slcq071.com:61616,tcp://slcq071mqs001.slcq071.com:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
+	private static final String DEFAULT_BROKER_URL = "failover:(tcp://10.124.135.6:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
+			//"failover:(tcp://slcq071mqm001.slcq071.com:61616,tcp://slcq071mqs001.slcq071.com:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
 			//"tcp://slcq055mqm001.slcq055.com:61616";
 
 	// <!--

@@ -13,7 +13,8 @@ import org.springframework.jms.core.JmsTemplate;
 //@Configuration
 public class MessagingListnerConfiguration {
 
-	private static final String DEFAULT_BROKER_URL = "tcp://dedicated-bus.mq.slcq055.com:61617?wireFormat.maxInactivityDuration=0";
+	private static final String DEFAULT_BROKER_URL = "failover:(tcp://10.124.135.6:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
+	//"tcp://dedicated-bus.mq.slcq055.com:61617?wireFormat.maxInactivityDuration=0";
 
 	// <!--
 	// failover:(tcp://dedicated-bus.mq.slcq072.com:61617?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5
