@@ -32,7 +32,7 @@ public class MessagingConfiguration {
 		return connectionFactory;
 	}
 
-	@Bean
+	@Bean("jsmTemplateSender")
 	public JmsTemplate jmsTemplate() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());

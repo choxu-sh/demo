@@ -10,7 +10,7 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
-//@Configuration
+@Configuration
 public class MessagingListnerConfiguration {
 
 	private static final String DEFAULT_BROKER_URL = "failover:(tcp://10.124.135.6:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
@@ -23,9 +23,9 @@ public class MessagingListnerConfiguration {
 	// failover:(tcp://slcq055mqm001.slcq055.com:61617,tcp://slcq055mqs001.slcq055.com:61617)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1
 	// -->
 
-	private static final String ORDER_QUEUE = "domain.accountmanagement.orderLifeCycle.approved";
+	private static final String ORDER_QUEUE = "gcp.to.ecomm";
 
-	//@Bean
+    @Bean
 	public ActiveMQConnectionFactory connectionFactory() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
@@ -33,7 +33,7 @@ public class MessagingListnerConfiguration {
 		return connectionFactory;
 	}
 
-	//@Bean
+	@Bean
 	public JmsTemplate jmsTemplate() {
 		JmsTemplate template = new JmsTemplate();
 		template.setConnectionFactory(connectionFactory());
@@ -41,7 +41,7 @@ public class MessagingListnerConfiguration {
 		return template;
 	}
 
-	//@Bean
+	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setConnectionFactory(connectionFactory());
