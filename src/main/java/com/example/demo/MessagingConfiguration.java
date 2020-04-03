@@ -12,7 +12,7 @@ import org.springframework.jms.core.JmsTemplate;
 @Configuration
 public class MessagingConfiguration {
 
-	@Value("${sender.broker}:10.124.135.6")
+	@Value("${sender.broker:10.124.135.6}")
 	private String senderBroker;
 	
 	
@@ -27,7 +27,7 @@ public class MessagingConfiguration {
 	// failover:(tcp://slcq055mqm001.slcq055.com:61617,tcp://slcq055mqs001.slcq055.com:61617)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1
 	// -->
 
-	@Value("${sender.queue.name}:domain.accountmanagement.orderLifeCycle.approved")
+	@Value("${sender.queue.name:domain.accountmanagement.orderLifeCycle.approved}")
 	private String ORDER_QUEUE;// = "domain.accountmanagement.orderLifeCycle.approved";
 
 	@Bean("senderConnectionFactory")
