@@ -27,8 +27,8 @@ public class MessagingConfiguration {
 	@Value("${sender.queue.name}:domain.accountmanagement.orderLifeCycle.approved")
 	private String ORDER_QUEUE;// = "domain.accountmanagement.orderLifeCycle.approved";
 
-	@Bean
-	public ActiveMQConnectionFactory connectionFactory() {
+	@Bean("senderConnectionFactory")
+	public ActiveMQConnectionFactory connectionFactorySender() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
 		// connectionFactory.setTrustedPackages(Arrays.asList("com.websystique.springmvc"));
@@ -38,7 +38,7 @@ public class MessagingConfiguration {
 	@Bean("jsmTemplateSender")
 	public JmsTemplate jmsTemplate() {
 		JmsTemplate template = new JmsTemplate();
-		template.setConnectionFactory(connectionFactory());
+		template.setConnectionFactory(connectionFactorySender());
 		template.setDefaultDestinationName(ORDER_QUEUE);
 		return template;
 	}

@@ -25,26 +25,26 @@ public class MessagingListnerConfiguration {
 
 	private static final String ORDER_QUEUE = "gcp.to.ecomm";
 
-    @Bean
-	public ActiveMQConnectionFactory connectionFactory() {
+    @Bean("listenerConnectionFactory")
+	public ActiveMQConnectionFactory connectionFactoryListener() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
 		// connectionFactory.setTrustedPackages(Arrays.asList("com.websystique.springmvc"));
 		return connectionFactory;
 	}
 
-	@Bean
+/*	@Bean
 	public JmsTemplate jmsTemplate() {
 		JmsTemplate template = new JmsTemplate();
-		template.setConnectionFactory(connectionFactory());
+		template.setConnectionFactory(connectionFactoryListener());
 		template.setDefaultDestinationName(ORDER_QUEUE);
 		return template;
-	}
+	}*/
 
 	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		factory.setConnectionFactory(connectionFactory());
+		factory.setConnectionFactory(connectionFactoryListener());
 		factory.setConcurrency("1-1");
 		return factory;
 	}
