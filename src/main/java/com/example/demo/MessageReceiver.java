@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class MessageReceiver {
 
 	static final Logger LOG = LoggerFactory.getLogger(MessageReceiver.class);
 
 	private static final String ORDER_RESPONSE_QUEUE = "ecomm.to.gcp";
 
-	@JmsListener(destination = ORDER_RESPONSE_QUEUE)
+	//@JmsListener(destination = ORDER_RESPONSE_QUEUE)
 	public void receiveMessage(final Map message) throws JMSException {
 		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		LOG.info("orderId={}", message.get("orderId"));

@@ -10,7 +10,7 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
-@Configuration
+//@Configuration
 public class MessagingListnerConfiguration {
 
 	private static final String DEFAULT_BROKER_URL = "failover:(tcp://10.124.135.5:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
@@ -25,7 +25,7 @@ public class MessagingListnerConfiguration {
 
 	private static final String ORDER_QUEUE = "ecomm.to.gcp";
 
-    @Bean("listenerConnectionFactory")
+   // @Bean("listenerConnectionFactory")
 	public ActiveMQConnectionFactory connectionFactoryListener() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
@@ -41,7 +41,7 @@ public class MessagingListnerConfiguration {
 		return template;
 	}*/
 
-	@Bean
+//	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
 		factory.setConnectionFactory(connectionFactoryListener());
