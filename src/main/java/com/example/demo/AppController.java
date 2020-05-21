@@ -29,5 +29,12 @@ public class AppController {
 		messageSender.sendMessage(msg);
 		return "OK";
 	}
+	
+@GetMapping("/msg2")
+	
+	public String sendMsg2(@RequestParam(name = "id") String id) {
+		
+		return "OK"+" "+id;
+	}
 
 }
