@@ -21,7 +21,7 @@ public class MessagingListnerConfiguration {
 	
 	private static final String DEFAULT_BROKER_URL = "failover:(tcp://dedicated-bus.mq.slcq045.com:61617?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5";
 	
-	private static final String DEFAULT_BROKER_URL_SSL = "(ssl://dedicated-bus.mq.slcq045.com:61617?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5";
+	private static final String DEFAULT_BROKER_URL_SSL = "failover:(ssl://dedicated-bus.mq.slcq045.com:61617?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5";
 	//"failover:(tcp://10.124.135.5:61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
 	//"tcp://dedicated-bus.mq.slcq055.com:61617?wireFormat.maxInactivityDuration=0";
 
