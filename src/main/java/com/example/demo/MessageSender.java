@@ -20,5 +20,14 @@ public class MessageSender {
 
 		jmsTemplate.convertAndSend(message);
 	}
+	
+	@Autowired
+	@Qualifier("jsmTemplateSenderSSL")
+	JmsTemplate jmsTemplateSSL;
+
+	public void sendMessageSSL(final Map message) {
+
+		jmsTemplateSSL.convertAndSend(message);
+	}
 
 }
