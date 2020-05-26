@@ -20,12 +20,13 @@ public class MessageReceiver {
 	private static final String ORDER_RESPONSE_QUEUE = "ecomm.to.gcp";
 
 	@JmsListener(destination = ORDER_RESPONSE_QUEUE)
-	public void receiveMessage(final Map message) throws JMSException {
+	public void receiveMessage(/*final Map message*/ String msg) throws JMSException {
 		LOG.info("+++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		
-		message.forEach((k, v) -> {
+	/*	message.forEach((k, v) -> {
 			LOG.info("key={}, value={}",k.toString(), v.toString());
-		});
+		});*/
+		LOG.info("msg={}", msg);
 		/*LOG.info("orderId={}", message.get("orderId"));
 		LOG.info("trigger={}", message.get("trigger"));
 		LOG.info("afterStatus={}", message.get("trigger"));*/
