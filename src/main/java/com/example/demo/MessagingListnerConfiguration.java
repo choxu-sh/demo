@@ -11,7 +11,7 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
-//@Configuration
+@Configuration
 public class MessagingListnerConfiguration {
 
 	private String trustStore = "";
