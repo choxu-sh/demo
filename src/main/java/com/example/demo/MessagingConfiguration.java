@@ -49,11 +49,14 @@ public class MessagingConfiguration {
 	
 	@Bean("senderConnectionFactorySSL")
 	public ActiveMQSslConnectionFactory connectionFactorySenderSSL() throws Exception {
-		String DEFAULT_BROKER_URL_SSL = "failover:(ssl://dedicated-bus.mq.slcq045.com:61620?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5"; 
+		String DEFAULT_BROKER_URL_SSL = "ssl://dedicated-bus.mq.slcq045.com:61620";
+				
+				//"failover:(ssl://dedicated-bus.mq.slcq045.com:61620?wireFormat.maxInactivityDuration=0)?randomize=false&maxReconnectAttempts=5"; 
 				 //"failover:(tcp://"+senderBroker+":61616)?randomize=false&jms.redeliveryPolicy.maximumRedeliveries=99&jms.redeliveryPolicy.initialRedeliveryDelay=600000&jms.prefetchPolicy.all=1";
 
 		 ActiveMQSslConnectionFactory connectionFactory = new ActiveMQSslConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL_SSL);
+		
 		/*connectionFactory.setTrustStore(trustStore);
 		connectionFactory.setTrustStorePassword(trustStorePassword);
 		connectionFactory.setKeyStore(keyStore);
