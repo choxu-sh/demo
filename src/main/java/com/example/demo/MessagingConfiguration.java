@@ -2,6 +2,12 @@ package com.example.demo;
 
 import java.util.Arrays;
 
+import javax.jms.Connection;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ActiveMQSslConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -80,5 +86,17 @@ public class MessagingConfiguration {
 		template.setDefaultDestinationName(ORDER_QUEUE);
 		return template;
 	}
+	
+	@Bean
+	public Session createProducer() throws JMSException, Exception
+	{
+	    Connection conn = connectionFactorySenderSSL().createConnection();
+	    conn.start();
+	    Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
+	   
+	    return session;
+	}
+
+
 
 }

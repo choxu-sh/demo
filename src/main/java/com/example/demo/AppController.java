@@ -3,6 +3,12 @@ package com.example.demo;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageProducer;
+import javax.jms.Session;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +33,9 @@ keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -alias broker -fil
 	@Autowired
 	MessageSender messageSender;
 	
+	@Autowired
+	Session session;
+	
 	@GetMapping("/msg")
 	public String sendMsg(@RequestParam(name = "id") String id) {
 		Map<String, String> msg = new HashMap<>();
@@ -50,6 +59,15 @@ public String sendMsg3(@RequestParam(name = "id") String id) {
 	msg.put("trigger", "SSL");
 	msg.put("afterStatus", "33");
 	messageSender.sendMessageSSL(msg);
+	return "OK";
+}
+
+@GetMapping("/msg5")
+public String sendMsg5(@RequestParam(name = "id") String id) throws JMSException {
+	 Destination dest = session.createQueue("sslDemo3");
+	    MessageProducer mp = session.createProducer(dest);
+	Message msg = session.createTextMessage("Hello SSL!");
+	mp.send(msg);
 	return "OK";
 }
 
